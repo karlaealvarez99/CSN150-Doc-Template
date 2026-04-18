@@ -23,7 +23,12 @@ Set up ESP32 and Arduino enviornment. Execute sketch " Wifiscanner".
 1. I began by installing Arduino into by Windows computer.
 2. I connected my ESP32-CAM to my computer with the Micro Data cable and checked the connection on my Device Manager along with the port.
 3. Once my Arduino IDE was instlled and setup, I chose the board I planned to work with on the IDE's list of board (AI Thinker ESP32-CAM) along with the port I plan to work with.  
-4. I loaded the CameraWebServer Example on Arduino.  
+- Opened Arduino IDE → **File** → **Preferences**
+- Added this URL to **Additional Boards Manager URLs**:
+https://espressif.github.io/arduino-esp32/package\_esp32\_index.json
+- Went to **Tools** → **Board** → **Boards Manager**
+- Searched for "**esp32**" and installed "**ESP32 by Espressif Systems**"
+5. I loaded the CameraWebServer Example on Arduino.  
 - **File** → **Examples** → **ESP32** → **Camera** → **CameraWebServer**  
 - Modified WiFi credentials:  
 const char* ssid = "YOUR\_WIFI\_SSID";  
@@ -39,11 +44,28 @@ Note your problems or errors here.  Google any error you may come across, and no
 
 1. E (485) camera: Camera probe failed with error 0x105(ESP_ERR_NOT_FOUND)
 Camera init failed with error 0x105
- How did I solve: 
+How did I solve:  
+Root cause: Wrong camera model selected in code    
+Solution: Ensured the correct camera model was uncommented  
 
-### Example Problem
-1. Arduino code will not load on ESP32 Cam.
-   Answer: Camera drivers were incorrect I needed to install the driver: [https://www.wch-ic.com/downloads/CH341SER_ZIP.html](https://github.com/martin-ger/esp32_nat_router).  I used file, "CH341SER.ZIP" and it worked.
+ > #define CAMERA\_MODEL\_AI\_THINKER // Has PSRAM
+
+Also checked that all other camera model definitions were commented out
+Additional check: Verified camera ribbon cable was properly inserted  
+
+2. Could not connect to WiFi / No IP address shown
+Problem: Serial monitor showed "Connecting to WiFi..." indefinitely
+
+Solution:
+- Double-checked WiFi credentials (SSID and password)  
+- Ensured WiFi is 2.4GHz (ESP32 doesn't support 5GHz)  
+- Moved ESP32-CAM closer to router during initial testing  
+- Verified no special characters in password that might cause issues  
 
 
-## Final Report
+## Final Report  
+
+I successfully configured the ESP32-CAM as a web server, and I achieved live video streaming over a local Wifi network with an accessible web interface. For future improvements, I hope to integrate this project into a home automation system along with motion detection functionality.  
+
+
+
