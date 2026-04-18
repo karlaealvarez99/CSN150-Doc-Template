@@ -1,4 +1,4 @@
-# Cybersecurity : CSN150-Doc-Template
+# Cybersecurity : CSN150 CameraWebServer Arduino Project
 
 ## Name of Project by Karla Alvarez
 ESP32 Introduction
