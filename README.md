@@ -13,13 +13,26 @@ Set up ESP32 and Arduino enviornment. Execute sketch " Wifiscanner".
 
 ## Links to documentation
 
-##### Video 1: 
+##### Video : https://youtu.be/4inE-n6kXSE?si=Lypd8axutqWwJNgk  
+##### Link : https://lastminuteengineers.com/getting-started-with-esp32-cam/  
 
-##### Other Links: 
+ 
 
 
 ## Steps I followed
 1. I began by installing Arduino into by Windows computer.
+2. I connected my ESP32-CAM to my computer with the Micro Data cable and checked the connection on my Device Manager along with the port.
+3. Once my Arduino IDE was instlled and setup, I chose the board I planned to work with on the IDE's list of board (AI Thinker ESP32-CAM) along with the port I plan to work with.  
+4. I loaded the CameraWebServer Example on Arduino.  
+- **File** → **Examples** → **ESP32** → **Camera** → **CameraWebServer**  
+- Modified WiFi credentials:  
+const char* ssid = "YOUR\_WIFI\_SSID";  
+const char* password = "YOUR\_WIFI\_PASSWORD";
+5. I uncommented CAMERA_MODEL_AI_THINKER on the example documentation.
+6. I uploaded the example and pressed the reset button on the ESP32.
+7. I opened the Serial Monitor, and found the PI address link and opened it on the browser.  
+8. I finally pressed the "Start Stream" button.
+
 
 ## Problems
 Note your problems or errors here.  Google any error you may come across, and not what you tried (even if it does not work), and what was the final answer. Document your errors and solutions that worked for you.  
